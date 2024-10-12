@@ -1,4 +1,7 @@
-node {
+pipeline {
+    agent any
+
+    node {
     stage('Preparation') {
         catchError(buildResult: 'SUCCESS') {
             sh 'docker stop samplerunning'
@@ -11,4 +14,5 @@ node {
     stage('Results') {
         build 'TestSampleApp'
     }
+}
 }
